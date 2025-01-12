@@ -8,7 +8,7 @@ public class RoomServiceClient {
     public List<Room> getRooms() {
         String apiUrl = URLs.urlRoomApi; // Replace with your backend's URL
         try {
-            String jsonResponse = Fetcher.fetchRooms(apiUrl);
+            String jsonResponse = Fetcher.fetch(apiUrl);
 
             // Remove leading and trailing brackets to get individual JSON objects
             jsonResponse = jsonResponse.substring(1, jsonResponse.length() - 1);

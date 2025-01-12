@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Reservation {
+public class Reservation implements Prototype<Reservation>{
     private int idReservation;
     private int idRoom;
     private int idUser;
@@ -18,8 +18,25 @@ public class Reservation {
         this.date = date;
     }
 
+    public Reservation(int idRoom, int idUser, LocalTime startDate, LocalTime endDate, LocalDate date) {
+        this.idRoom = idRoom;
+        this.idUser = idUser;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.date = date;
+    }
+
     public Reservation() {
     }
+
+        private Reservation(Reservation original) {
+            this.idReservation = original.getIdReservation()+1;
+            this.idRoom = original.getIdRoom();
+            this.startDate = original.getStartDate();
+            this.endDate = original.getEndDate();
+            this.date = original.getDate();
+        }
+
 
     public int getIdReservation() {
         return idReservation;
@@ -71,13 +88,17 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "Reservation{" +
-                "idReservation=" + idReservation +
-                ", idRoom=" + idRoom +
-                ", idUser=" + idUser +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", date=" + date +
-                '}';
+        return "\nReservation Details:\n" +
+                "ID: " + idReservation + "\n" +
+                "Room ID: " + idRoom + "\n" +
+                "User ID: " + idUser + "\n" +
+                "Start Time: " + startDate + "\n" +
+                "End Time: " + endDate + "\n" +
+                "Date: " + date + "\n";
+    }
+
+    @Override
+    public Reservation clone() {
+        return new Reservation(this);
     }
 }

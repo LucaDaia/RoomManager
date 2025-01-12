@@ -8,9 +8,6 @@ public class ReservationScanner {
 
         System.out.println("Enter reservation details:");
 
-        System.out.print("Reservation ID: ");
-        int idReservation = scanner.nextInt();
-
         System.out.print("Room ID: ");
         int idRoom = scanner.nextInt();
 
@@ -31,7 +28,7 @@ public class ReservationScanner {
         LocalDate date = LocalDate.parse(dateString);
 
         // Create Reservation object with input values
-        Reservation reservation = new Reservation(idReservation, idRoom, idUser, startDate, endDate, date);
+        Reservation reservation = new Reservation(idRoom, idUser, startDate, endDate, date);
 
         System.out.println("\nReservation details:");
         System.out.println(reservation);

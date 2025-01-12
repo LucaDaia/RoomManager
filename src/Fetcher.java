@@ -5,7 +5,7 @@ import java.net.URL;
 
 public class Fetcher {
 
-    public static String fetchRooms(String apiUrl) throws Exception {
+    public static String fetch(String apiUrl) throws Exception {
         // Create a URL object with the endpoint
         URL url = new URL(apiUrl);
 

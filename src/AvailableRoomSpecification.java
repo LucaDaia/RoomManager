@@ -28,16 +28,12 @@ public class AvailableRoomSpecification implements Specification<Reservation> {
     }
 
     @Override
-    public boolean isSatisfiedBy(Reservation reservation) {
-        return reservationList.stream()
-                .noneMatch(r -> r.getDate().equals(this.date) && Objects.equals(r.getIdRoom(), this.idRoom));
-    }
-
-    public List<Reservation> filterReservations() {
+    public List<Reservation> isSatisfiedBy() {
         return reservationList.stream()
                 .filter(r -> r.getDate().equals(this.date) && Objects.equals(r.getIdRoom(), this.idRoom))
                 .toList();
     }
+
 
 
 
