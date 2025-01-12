@@ -49,7 +49,7 @@ public class Room {
     @Override
     public String toString() {
         return "\nRoom details:\n" +
-                "Room id" + id + "\n"  +
+                "Room id: " + id + "\n"  +
                 "Room name: " + roomName + "\n" +
                 "Location: " + location + "\n" +
                 "Capacity: " + capacity + "\n";
