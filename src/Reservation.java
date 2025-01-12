@@ -30,7 +30,7 @@ public class Reservation implements Prototype<Reservation>{
     }
 
         private Reservation(Reservation original) {
-            this.idReservation = original.getIdReservation()+1;
+            this.idReservation = 0;
             this.idRoom = original.getIdRoom();
             this.startDate = original.getStartDate();
             this.endDate = original.getEndDate();

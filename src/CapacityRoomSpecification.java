@@ -14,7 +14,7 @@ public class CapacityRoomSpecification implements Specification<Room>{
     @Override
     public List<Room> isSatisfiedBy() {
         return roomsList.stream()
-                .filter(r -> Objects.equals(r.getCapacity(), this.capacity))
+                .filter(r -> r.getCapacity() >= this.capacity)
                 .toList();
     }
 }

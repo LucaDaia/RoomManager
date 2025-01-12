@@ -26,14 +26,14 @@ public class Main {
                 case 2 -> userFacade.reserveRoom();
                 case 3 -> userFacade.filterByCapacity();
                 case 4 -> userFacade.filterByDateAndId();
-//                case 5 -> cloneReservation(scanner);
+                case 5 -> userFacade.cloneReservation();
                 case 6 -> userFacade.showRooms();
                 case 7 ->
                 {
-                    System.out.println("📌 Aplicația s-a închis.");
+                    System.out.println("📌 The app closed.");
                     return;
                 }
-                default -> System.out.println("❌ Opțiune invalidă. Alege din nou.");
+                default -> System.out.println("❌ Wrong option. Pick again");
             }
         }
 

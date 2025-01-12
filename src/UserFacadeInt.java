@@ -7,4 +7,5 @@ public interface UserFacadeInt {
     public void filterByRoom();
     public void filterByCapacity();
     public void filterByDateAndId();
+    public void cloneReservation();
 }

@@ -35,43 +35,17 @@ public class ClientApp {
         System.out.println("7. Quit");
     }
 
-    public void showReservations() {
-        System.out.println("------------------------------------");
-        System.out.println("📌 Lista rezervărilor existente:");
-        if (reservations.isEmpty()) {
-            System.out.println("❌ Nu există rezervări.");
-        } else {
-            reservations.forEach(System.out::println);
-        }
-    }
-
-
-
-//    private void cloneReservation(Scanner scanner) {
+//    public void showReservations() {
 //        System.out.println("------------------------------------");
-//        System.out.print("📌 Introduceți ID-ul rezervării pe care doriți să o clonați: ");
-//        int originalId = scanner.nextInt();
-//        scanner.nextLine();
-//
-//        Reservation original = reservations.stream()
-//                .filter(r -> r.getId() == originalId)
-//                .findFirst()
-//                .orElse(null);
-//
-//        if (original == null) {
-//            System.out.println("❌ Rezervare inexistentă.");
-//            return;
+//        System.out.println("📌 Lista rezervărilor existente:");
+//        if (reservations.isEmpty()) {
+//            System.out.println("❌ Nu există rezervări.");
+//        } else {
+//            reservations.forEach(System.out::println);
 //        }
-//
-//        System.out.print("Introduceți noua dată a rezervării (YYYY-MM-DD): ");
-//        LocalDate newDate = LocalDate.parse(scanner.nextLine());
-//
-//        Reservation clonedReservation = original.clone();
-//        clonedReservation.setDate(newDate);
-//        clonedReservation.setId(idCounter++);
-//
-//        reservations.add(clonedReservation);
-//        System.out.println("✅ Rezervare clonată cu succes!");
-//        System.out.println(clonedReservation);
 //    }
+
+
+
+
 }

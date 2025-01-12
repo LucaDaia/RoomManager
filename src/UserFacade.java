@@ -34,7 +34,7 @@ public class UserFacade implements UserFacadeInt{
 //        LocalDate dateReservation = RoomReservationUtils.scannerDate();
 
         Reservation inputReservation = RoomReservationUtils.inputReservation();
-        reservationServiceClient.postReservation(inputReservation);
+//        reservationServiceClient.postReservation(inputReservation);
         if(RoomReservationUtils.verifyDisponibility(reservationList, inputReservation) == true) {
             System.out.println("Room can be reserved");
             reservationServiceClient.postReservation(inputReservation);
@@ -87,5 +87,45 @@ public class UserFacade implements UserFacadeInt{
         List <Reservation> reservationList = reservationServiceClient.getReservations();
         AvailableRoomSpecification availableRoomSpecification = new AvailableRoomSpecification(reservationList, dateIn, idIn);
         System.out.println(availableRoomSpecification.isSatisfiedBy());
+    }
+
+    @Override
+    public void cloneReservation() {
+        System.out.println("------------------------------------");
+        System.out.print("📌 Enter the ID of the reservation: ");
+        Scanner scanner = new Scanner(System.in);
+        int originalId = scanner.nextInt();
+        scanner.nextLine();
+
+        ReservationServiceClient reservationServiceClient = new ReservationServiceClient();
+        List<Reservation> reservations = reservationServiceClient.getReservations();
+
+        Reservation original = reservations.stream()
+                .filter(r -> r.getIdReservation() == originalId)
+                .findFirst()
+                .orElse(null);
+
+        if (original == null) {
+            System.out.println("❌ Wrong id.");
+            return;
+        }
+
+        System.out.println("Reservation found: " + original);
+
+        System.out.print("Enter the new reservation date (YYYY-MM-DD): ");
+        LocalDate newDate = LocalDate.parse(scanner.nextLine());
+
+        Reservation clonedReservation = original.clone();
+        clonedReservation.setDate(newDate);
+
+        if(RoomReservationUtils.verifyDisponibility(reservations, original) == true) {
+            System.out.println("Room can be reserved");
+            reservationServiceClient.postReservation(original);
+
+        } else {
+            System.out.println("Room cannot be reserved in that time period!");
+        }
+        reservationServiceClient.postReservation(clonedReservation);
+        System.out.println("✅ Reservation duplicated succesfully!");
     }
 }
